@@ -55,8 +55,8 @@ export default function MonoStackedBar({
   data,
   color = "blue",
   luminosity = "dark",
-  unit = "",
   displayLabels = true,
+  unit = "",
   width,
   height = 20,
   radius = 10
@@ -75,7 +75,6 @@ export default function MonoStackedBar({
       style={{
         maxWidth: toPx(width)
       }}
-      className={styles.root}
     >
       <div className={styles.stackedBar}>
         {data.length &&
