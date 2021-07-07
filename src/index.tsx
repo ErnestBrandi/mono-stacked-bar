@@ -1,5 +1,4 @@
 import React from "react"
-import randomcolor from "randomcolor"
 import styles from "./styles.module.css"
 
 interface BarData {
@@ -10,7 +9,7 @@ interface BarData {
 
 interface MonoStackedBarProps {
   data: (number | BarData)[]
-  color?: string
+  colors?: string[]
   luminosity?: "bright" | "light" | "dark"
   displayLabels?: boolean
   unit?: string
@@ -42,7 +41,7 @@ function isBarDataValues<BarData>(arr: (number | BarData)[]): arr is BarData[] {
 }
 
 const toPx = (size: number | undefined): string | undefined => {
-  if (!size) return undefined
+  if (!size) return "0"
   return `${size}px`
 }
 
@@ -53,7 +52,7 @@ const capitalize = (s: string): string => {
 
 export default function MonoStackedBar({
   data,
-  color = "blue",
+  colors = [],
   luminosity = "dark",
   displayLabels = true,
   unit = "",
@@ -64,16 +63,11 @@ export default function MonoStackedBar({
   const sumValues = data.length
     ? data.map((section) => getSectionValue(section)).reduce((a, b) => a + b)
     : 1
-  const colors = randomcolor({
-    hue: color,
-    luminosity: luminosity,
-    count: data.length
-  })
 
   return (
     <div
       style={{
-        maxWidth: toPx(width)
+        maxWidth: width
       }}
     >
       <div className={styles.stackedBar}>
@@ -86,7 +80,7 @@ export default function MonoStackedBar({
                 key={index}
                 style={{
                   width: `${proportion}%`,
-                  height: toPx(height),
+                  height: height,
                   borderRadius:
                     data.length === 1 || proportion === 100
                       ? radiusPx
@@ -95,14 +89,17 @@ export default function MonoStackedBar({
                       : index === data.length - 1
                       ? `0 ${radiusPx} ${radiusPx} 0`
                       : "0",
-                  backgroundColor: getSectionColor(section) || colors[index]
+                  backgroundColor:
+                    getSectionColor(section) || colors[index] || "#393986",
+                  display: "flex",
+                  alignItems: "center"
                 }}
                 className={styles.section}
               >
                 {displayLabels && proportion > 10 && (
                   <span
                     style={{
-                      fontSize: toPx(height - height / 10),
+                      fontSize: height - height / 4,
                       color: luminosity === "light" ? "black" : "white"
                     }}
                     className={styles.sectionLabel}
@@ -126,7 +123,7 @@ export default function MonoStackedBar({
                 key={index}
                 style={{
                   width: `${proportion}%`,
-                  fontSize: toPx(height - height / 3)
+                  fontSize: height - height / 3
                 }}
               >
                 {capitalize(section.caption)}

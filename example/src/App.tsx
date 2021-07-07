@@ -3,12 +3,11 @@ import MonoStackedBar from "mono-stacked-bar"
 import "mono-stacked-bar/dist/index.css"
 
 const App = () => {
+  const colors = ["#393986", "#6767aa", "#56b5b5"]
   return (
     <>
       <p>Most simple</p>
       <MonoStackedBar data={[10, 20, 15]} />
-      <p>Type of color / luminosity</p>
-      <MonoStackedBar data={[10, 20, 15]} color="green" luminosity="bright" />
       <p>Custom colors</p>
       <MonoStackedBar
         data={[
@@ -17,9 +16,13 @@ const App = () => {
         ]}
       />
       <p>Without custom unit</p>
-      <MonoStackedBar data={[50, 20, 30]} unit="%" />
+      <MonoStackedBar data={[50, 20, 30]} unit="%" colors={colors} />
       <p>Without label</p>
-      <MonoStackedBar data={[10, 10, 10]} displayLabels={false} />
+      <MonoStackedBar
+        data={[10, 10, 10]}
+        displayLabels={false}
+        colors={colors}
+      />
       <p>With caption</p>
       <MonoStackedBar
         data={[
@@ -27,9 +30,16 @@ const App = () => {
           { value: 14, caption: "Women" },
           { value: 4, caption: "Other gender" }
         ]}
+        colors={colors}
       />
       <p>Without radius + height + maxWidth</p>
-      <MonoStackedBar data={[10, 10, 10]} radius={0} height={30} width={400} />
+      <MonoStackedBar
+        data={[10, 10, 10]}
+        radius={0}
+        height={30}
+        width={400}
+        colors={colors}
+      />
     </>
   )
 }
