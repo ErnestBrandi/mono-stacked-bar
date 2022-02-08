@@ -50,6 +50,13 @@ const capitalize = (s: string): string => {
   return s.charAt(0).toUpperCase() + s.slice(1)
 }
 
+const sumSectionArray = (sectionArray: (number | BarData)[]): number => {
+  if (sectionArray.length === 0) return 0
+  return sectionArray
+    .map((section) => getSectionValue(section))
+    .reduce((a, b) => a + b)
+}
+
 export default function MonoStackedBar({
   data,
   colors = [],
@@ -84,9 +91,11 @@ export default function MonoStackedBar({
                   borderRadius:
                     data.length === 1 || proportion === 100
                       ? radiusPx
-                      : index === 0
+                      : index === 0 ||
+                        sumSectionArray(data.slice(0, index)) === 0
                       ? `${radiusPx} 0 0 ${radiusPx}`
-                      : index === data.length - 1
+                      : index === data.length - 1 ||
+                        sumSectionArray(data.slice(index + 1)) === 0
                       ? `0 ${radiusPx} ${radiusPx} 0`
                       : "0",
                   backgroundColor:
