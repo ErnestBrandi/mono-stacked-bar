@@ -59,7 +59,5 @@
   "files": [
     "dist"
   ],
-  "dependencies": {
-    "randomcolor": "^0.6.2"
-  }
+  "dependencies": {}
 }
