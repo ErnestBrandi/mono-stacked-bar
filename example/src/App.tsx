@@ -8,8 +8,9 @@ const App = () => {
     <>
       <p>Most simple</p>
       <MonoStackedBar data={[10, 20, 15]} />
-      <p>Custom colors</p>
+      <p>Light colors</p>
       <MonoStackedBar
+        labelColor="black"
         data={[
           { value: 10, color: "#fd4949" },
           { value: 20, color: "#fba73b" }

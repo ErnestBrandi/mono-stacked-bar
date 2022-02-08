@@ -10,8 +10,8 @@ interface BarData {
 interface MonoStackedBarProps {
   data: (number | BarData)[]
   colors?: string[]
-  luminosity?: "bright" | "light" | "dark"
   displayLabels?: boolean
+  labelColor?: string
   unit?: string
   width?: number
   height?: number
@@ -60,8 +60,8 @@ const sumSectionArray = (sectionArray: (number | BarData)[]): number => {
 export default function MonoStackedBar({
   data,
   colors = [],
-  luminosity = "dark",
   displayLabels = true,
+  labelColor = "white",
   unit = "",
   width,
   height = 20,
@@ -109,7 +109,7 @@ export default function MonoStackedBar({
                   <span
                     style={{
                       fontSize: height - height / 4,
-                      color: luminosity === "light" ? "black" : "white"
+                      color: labelColor
                     }}
                     className={styles.sectionLabel}
                   >
