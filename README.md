@@ -56,12 +56,12 @@ data | `BarData[]` | <pre>value: number (required)<br/>color: string (optional)<
 
 ## Optional props
 
-| props         | type                                | default | description                                                        |
-| ------------- | ----------------------------------- | ------- | ------------------------------------------------------------------ |
-| color         | `string`                            | `blue`  | A default set of colors picked thanks to the `randomcolor` package |
-| luminosity    | `"bright"` or `"light"` or `"dark"` | `dark`  | Default `luminosity` applied to `randomcolor`                      |
-| displayLabels | `boolean`                           | `true`  | Should `data` values be displayed inside bar sections              |
-| unit          | `string`                            | `""`    | The unit to be displayed after labels (`%, $, etc)`                |
-| width         | `number (px)`                       |         | Max width of the stacked bar (`full-width` by default)             |
-| height        | `number (px)`                       | `20`    | The height of the stacked bar                                      |
-| radius        | `number (px)`                       | `10`    | The border radius applied to the edges                             |
+| props         | type          | default | description                                                        |
+| ------------- | ------------- | ------- | ------------------------------------------------------------------ |
+| color         | `string`      | `blue`  | A default set of colors picked thanks to the `randomcolor` package |
+| labelColor    | `string`      | `white` | Default color for all labels                                       |
+| displayLabels | `boolean`     | `true`  | Should `data` values be displayed inside bar sections              |
+| unit          | `string`      | `""`    | The unit to be displayed after labels (`%, $, etc)`                |
+| width         | `number (px)` |         | Max width of the stacked bar (`full-width` by default)             |
+| height        | `number (px)` | `20`    | The height of the stacked bar                                      |
+| radius        | `number (px)` | `10`    | The border radius applied to the edges                             |
